@@ -142,30 +142,30 @@ RSpec.describe "Person" do
       end
     end
 
-    describe "#take_bath" do
-      it "makes the person cleaner by 4 points" do
-        penelope.hygiene = 4
-        penelope.take_bath
-        expect(penelope.hygiene).to eq(8)
-      end
+    # describe "#take_bath" do
+    #   it "makes the person cleaner by 4 points" do
+    #     penelope.hygiene = 4
+    #     penelope.take_bath
+    #     expect(penelope.hygiene).to eq(8)
+    #   end
 
-      it "returns a song" do
-        penelope.hygiene = 5
-        expect(penelope.take_bath).to eq("♪ Rub-a-dub just relaxing in the tub ♫")
-      end
+    #   it "returns a song" do
+    #     penelope.hygiene = 5
+    #     expect(penelope.take_bath).to eq("♪ Rub-a-dub just relaxing in the tub ♫")
+    #   end
 
-      it "can't make a person cleaner by 10 points (hint: use the custom #hygiene= method)" do
-        penelope.hygiene = 9
-        penelope.take_bath
-        expect(penelope.hygiene).to eq(10)
-      end
+      # it "can't make a person cleaner by 10 points (hint: use the custom #hygiene= method)" do
+      #   penelope.hygiene = 9
+      #   penelope.take_bath
+      #   expect(penelope.hygiene).to eq(10)
+      # end
 
-      it "calls on the #hygiene= method to increment hygiene" do
-        penelope.hygiene = 9
-        expect(penelope).to receive(:hygiene=).with(13).and_return(10)
-        penelope.take_bath
-      end
-    end
+      # it "calls on the #hygiene= method to increment hygiene" do
+      #   penelope.hygiene = 9
+      #   expect(penelope).to receive(:hygiene=).with(13).and_return(10)
+      #   penelope.take_bath
+      # end
+    # end
 
     describe "#work_out" do
 

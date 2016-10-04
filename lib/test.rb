@@ -5,9 +5,8 @@
 
 
 class Person
-  attr_accessor :bank_account,:happiness, :hygiene
+  attr_accessor :bank_account, :happiness, :hygiene
   attr_reader :name
-
   def initialize(name)
     @name = name
     @bank_account = 25
@@ -28,7 +27,7 @@ class Person
   end
 
 
-  def happiness=(num) #this is when you change it!! you dont touch this when incrmeenting
+  def happiness=(num)
     if @happiness > 10
       @happiness = 10
     elsif @happiness < 0
@@ -38,16 +37,7 @@ class Person
     end
   end
 
-def hygiene #this is when you change it!! you dont touch this when incrmeenting #why isn't it self.hygiene?? just @hygiene?
-    if @hygiene > 10
-      @hygiene = 10
-    elsif @hygiene < 0
-      @hygiene = 0
-    else
-      @hygiene
-    end
-  end
-   def hygiene=(num) #this is when you change it!! you dont touch this when incrmeenting #why isn't it self.hygiene?? just @hygiene?
+   def hygiene=(num)
     if @hygiene > 10
       @hygiene = 10
     elsif @hygiene < 0
@@ -76,38 +66,38 @@ def hygiene #this is when you change it!! you dont touch this when incrmeenting 
 
 
   def take_bath
-    self.hygiene +=4 #why isn't it self.hygiene?? not just @hygiene?
+    @hygiene +=4
+    @hygiene > 10 ? @hygiene = 10 : @hygiene = @hygiene
+   
     return "♪ Rub-a-dub just relaxing in the tub ♫"
 
   end
 
   def work_out
-    self.happiness += 2
-    self.hygiene -= 3
+    @happiness += 2
+    @happiness > 10 ? @happiness = 10 : @happiness = @happiness
+
+    @hygiene -= 3
+    @hygiene < 1 ? @hygiene = 0 : @hygiene = @hygiene
+
     return "♪ another one bites the dust ♫"
   end
 
-  def call_friend(friend) #person is an instance of Class Person
-  
-    friend.happiness +=3
-    self.happiness +=3
-    "Hi #{friend.name}! It's #{self.name}. How are you?"
+  def call_friend(the_self) #person is an instance of Class Person
+    @happiness +=1
   end
 
   def start_conversation(person, topic)
-    people_objects = [self, person]
-    if topic == 'politics' 
-      person.happiness -=2 
-      self.happiness -=2 
-      return "blah blah partisan blah lobbyist"
-    elsif topic == 'weather' 
-      person.happiness +=1
-
-      self.happiness +=1 
-      return "blah blah sun blah rain"
-      else
-      return "blah blah blah blah blah" 
+    topic == 'politics' ? person.happiness -=2 : @happiness
+    # topic == 'weather' ? "blah blah sun blah rain" : @happiness
+    
+    if topic == 'weather' 
+     person.happiness +=1
+     return "blah blah sun blah rain"
+    else
+      @happiness
     end
+
 
   end
 
